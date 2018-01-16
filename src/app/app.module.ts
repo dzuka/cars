@@ -1,9 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './component/layout/layout.component';
-import { CarComponentComponent } from './car-component/car-component.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { CarComponentComponent } from './components/car-component/car-component.component';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: '/cars',
+    pathMatch: 'full'
+  },
+  {
+    path: 'cars',
+    component: CarComponentComponent
+
+  }
+];
+
 
 @NgModule({
   declarations: [
@@ -12,7 +27,8 @@ import { CarComponentComponent } from './car-component/car-component.component';
     CarComponentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
